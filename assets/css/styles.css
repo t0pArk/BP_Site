@@ -152,7 +152,15 @@ p { margin: 0 0 1em; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,14,10,.05) 30%, rgba(20,14,10,.72) 100%);
+  background:
+    linear-gradient(90deg, rgba(20,14,10,.78) 0%, rgba(20,14,10,.55) 38%, rgba(20,14,10,.12) 70%, rgba(20,14,10,0) 100%),
+    linear-gradient(180deg, rgba(20,14,10,.25) 0%, rgba(20,14,10,0) 35%, rgba(20,14,10,.55) 100%);
+}
+.hero h1, .hero .lede, .hero .eyebrow { text-shadow: 0 1px 18px rgba(0,0,0,.35); }
+@media (max-width: 700px) {
+  .hero-media::after {
+    background: linear-gradient(180deg, rgba(20,14,10,.35) 0%, rgba(20,14,10,.55) 40%, rgba(20,14,10,.85) 100%);
+  }
 }
 .hero-content { position: relative; width: 100%; max-width: var(--container); margin: 0 auto; padding: 120px var(--gutter) clamp(48px, 7vw, 88px); }
 .hero .eyebrow { color: #f3d79c; }
