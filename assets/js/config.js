@@ -8,5 +8,5 @@
  * Leave it empty until you're ready; the form will explain that inquiries aren't connected yet.
  */
 window.BP_CONFIG = {
-  inquiryEmail: ""
+  inquiryEmail: "BrancifortePlaza@gmail.com"
 };
