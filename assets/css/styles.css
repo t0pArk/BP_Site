@@ -188,7 +188,7 @@ p { margin: 0 0 1em; }
 /* Spaces table */
 .section-head { margin-bottom: 40px; }
 .section-head h2 { color: var(--terracotta); }
-.spaces-table { border-top: 1px solid var(--line); }
+.spaces-table { display: flex; flex-direction: column; }
 .spaces-row {
   display: grid;
   grid-template-columns: 2.2fr 1.3fr 1fr 1.6fr 140px;
@@ -206,10 +206,32 @@ p { margin: 0 0 1em; }
   border-bottom: 1px solid var(--line);
 }
 .col-details { text-align: right; }
-.space { border-bottom: 1px solid var(--line); background: var(--paper); }
-.space:nth-child(even) { background: #fbf7f0; }
+/* Each space is its own card: a bold, tinted header row over a light details panel */
+.space {
+  background: var(--paper);
+  border: 1px solid #d6c7ad;
+  border-radius: var(--radius);
+  margin-top: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(42,36,32,.06);
+}
+.space > .spaces-row {
+  background: var(--cream-2);
+  font-weight: 600;
+  color: var(--ink);
+  border-left: 4px solid var(--terracotta);
+  transition: background .15s;
+}
+.space > .spaces-row:hover { background: #e8dcc8; }
+.space.open > .spaces-row { background: var(--green); color: var(--cream); border-left-color: var(--ochre); }
+.space.open > .spaces-row .space-name,
+.space.open > .spaces-row .space-name:hover { color: var(--paper); }
+.space.open > .spaces-row .space-toggle { color: #f3d79c; }
+.space.open > .spaces-row .space-cell-label { color: rgba(246,240,230,.75); }
+.space .space-panel { padding-top: 0; }
+.space .space-panel-inner { border-top: 0; padding-top: 28px; }
 .space-name {
-  font: 600 22px/1.2 var(--serif);
+  font: 700 24px/1.2 var(--serif);
   color: var(--green);
   background: none;
   border: 0;
@@ -267,11 +289,11 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 900px) {
   .spaces-row-head { display: none; }
-  .spaces-row { grid-template-columns: 1fr 1fr; row-gap: 14px; padding: 22px 4px; }
+  .spaces-row { grid-template-columns: 1fr 1fr; row-gap: 14px; padding: 20px 16px; }
   .spaces-row > :first-child { grid-column: 1 / -1; }
   .space-cell-label { display: block; font: 700 10px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
   .space-toggle { grid-column: 1 / -1; justify-self: start; }
-  .space-panel { padding: 0 4px 28px; }
+  .space-panel { padding: 0 16px 28px; }
   .space-panel-inner { grid-template-columns: 1fr; gap: 28px; }
   .space-photos { order: -1; }
 }
